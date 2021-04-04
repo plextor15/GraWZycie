@@ -15,7 +15,7 @@ private:
 
 protected:
     Cell** Plansza;	//wskaznik do tablicy 2d Celli
-	Cell** PlanszTMP;	//wskaxnik do tablicy przejsciowej
+	Cell** PlanszaTMP;	//wskaxnik do tablicy przejsciowej
 
 	Array();
 	Array(long wys, long szer);

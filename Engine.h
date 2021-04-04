@@ -21,8 +21,8 @@ public:
 	const Engine& operator=(const Engine& e);
 
 	void Initialize();
-	void Start(){}
-	void GameLoop(){}
+	void Start();
+	void GameLoop();
 	void Pause();
 	void Resume();
 	void Quit();

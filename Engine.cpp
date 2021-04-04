@@ -2,7 +2,7 @@
 #include <fstream>
 
 Engine::Engine(){
-    Array Plansza();
+    //Array Plansza();
 
 }
 
@@ -18,4 +18,36 @@ void Engine::Initialize(){
     inic >> szerokosc >> wysokosc;
     SetSzerokosc(szerokosc);
     SetWysokosc(wysokosc);
+
+    *Plansza = new Cell[GetWysokosc()];
+    for (long i = 0; i < GetWysokosc(); i++){
+        Plansza[i] = new Cell[GetSzerokosc()];
+    }
+
+    long ileWszystkich = GetSzerokosc() * GetWysokosc(); //ile jest wszystkich pol na planszy
+    bool czytnik;
+    for (long i = 0; i < ileWszystkich; i++){
+        inic >> czytnik;
+        if (czytnik) {
+            Plansza[ileWszystkich / GetWysokosc()][ileWszystkich / GetSzerokosc()].Ozyw();
+        }
+        else {
+            Plansza[ileWszystkich / GetWysokosc()][ileWszystkich / GetSzerokosc()].Zabij();
+        }
+    }
+
+    inic.close();
+    return;
 }
+
+void Engine::Start(){
+
+    return;
+}
+
+void Engine::GameLoop(){
+
+    return;
+}
+
+
