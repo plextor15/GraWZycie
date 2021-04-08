@@ -35,6 +35,8 @@ public:
 	void SetSzerokosc(long szer);
 	long GetWysokosc();
 	long GetSzerokosc();
+
+	friend class Engine;
 };
 
 #endif // !ARRAY_H

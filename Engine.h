@@ -29,6 +29,9 @@ public:
 
 	void Load(std::string DoZaladowania);
 	void Save(std::string DoZapisania);
+
+	friend class TxT;
+	//friend class aPI;
 };
 
 #endif // !ENGINE_H

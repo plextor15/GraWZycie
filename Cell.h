@@ -4,8 +4,8 @@
 class Cell
 {
 private:
-	long X;
-	long Y;
+	//long X;
+	//long Y;
 	bool zywy;
 
 public:
@@ -16,10 +16,12 @@ public:
 	void Zabij();
 	void Ozyw();
 
-	long GetX();
+	/*long GetX();
 	long GetY();
 	void SetX(long x);
-	void SetY(long y);
+	void SetY(long y);*/
+
+	friend class Array;
 };
 
 #endif // !CELL_H
