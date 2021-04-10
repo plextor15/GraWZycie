@@ -21,14 +21,14 @@ public:
 	const Engine& operator=(const Engine& e);
 
 	void Initialize();
-	void Start();
+	//void Start();
 	void GameLoop();
-	void Pause();
-	void Resume();
-	void Quit();
+	//void Pause();
+	//void Resume();
+	//void Quit();
 
-	void Load(std::string DoZaladowania);
-	void Save(std::string DoZapisania);
+	//void Load(std::string DoZaladowania);
+	//void Save(std::string DoZapisania);
 
 	friend class TxT;
 	//friend class aPI;

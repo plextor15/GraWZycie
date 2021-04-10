@@ -12,14 +12,15 @@ public:
 	Cell();
 	~Cell();
 	
-	bool SprawdzenieSasiadow();
+	//bool SprawdzenieSasiadow();
+	bool CzyZyje();
 	void Zabij();
 	void Ozyw();
 
-	/*long GetX();
-	long GetY();
-	void SetX(long x);
-	void SetY(long y);*/
+	//long GetX();
+	//long GetY();
+	//void SetX(long x);
+	//void SetY(long y);
 
 	friend class Array;
 };

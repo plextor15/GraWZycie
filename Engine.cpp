@@ -1,5 +1,5 @@
 #include "Engine.h"
-#include <fstream>
+//#include <fstream>
 
 Engine::Engine(){
     //Array Plansza();
@@ -31,21 +31,21 @@ void Engine::Initialize(){
         if (czytnik) {
             Plansza[ileWszystkich / GetWysokosc()][ileWszystkich / GetSzerokosc()].Ozyw();
         }
-        else {
-            Plansza[ileWszystkich / GetWysokosc()][ileWszystkich / GetSzerokosc()].Zabij();
-        }
+        //else { //wszystkie zaczynaja jako martwe
+        //    Plansza[ileWszystkich / GetWysokosc()][ileWszystkich / GetSzerokosc()].Zabij();
+        //}
     }
 
     inic.close();
     return;
 }
 
-void Engine::Start(){
-
-    return;
-}
-
 void Engine::GameLoop(){
+    while (true)
+    {
+        Analiza();
+        Przejscie();
+    }
 
     return;
 }

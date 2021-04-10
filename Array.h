@@ -6,7 +6,7 @@
 class Array
 {
 private:
-	bool Edycja;		//blokada zeby nie zaczelo zyc podczas edycji
+	//bool Edycja;		//blokada zeby nie zaczelo zyc podczas edycji
 	long Szerokosc;
 	long Wysokosc;
 
@@ -15,21 +15,22 @@ private:
 
 protected:
     Cell** Plansza;	//wskaznik do tablicy 2d Celli
-	Cell** PlanszaTMP;	//wskaxnik do tablicy przejsciowej
+	Cell** PlanszaTMP;	//wskaznik do tablicy przejsciowej
 
 	Array();
 	Array(long wys, long szer);
 	~Array();
 
-	void AnalizaKroku();
+	bool SprawdzenieSasiadow(long pozX, long pozY);
+	void AnalizaKroku(long pozX, long pozY);
 	void Przejscie();
 
 public:
 	void Analiza();
 
-	bool GetTryb();
-	void TrybEdycji();
-	void TrybGry();
+	//bool GetTryb();
+	//void TrybEdycji();
+	//void TrybGry();
 
 	void SetWysokosc(long wys);
 	void SetSzerokosc(long szer);
