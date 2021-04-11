@@ -63,24 +63,24 @@ cout<<"\nPlansza przed Analiza()\n";
 	}
 
 	//DEBUG ONLY!!
-	int waskol = 0;
-	long doWysokosc = Wysokosc - 1;
-	long doSzerokosc = Szerokosc - 1;
-	cout << "\n-----------MOJE przed analiza krokow--------------\n";
-	for (long i = 1; i < doWysokosc; i++) {
-		for (long j = 1; j < doSzerokosc; j++) {
-			cout << "\n-----------" << waskol << "--------------\n";
-			waskol++;
-			AnalizaKroku(j, i);                   ///??? Blad jest w   AnalizaKroku(j, i);   z tego program nie wychodzi
-		}
-	}
-	cout << "\n-----------MOJE po analiza krokow--------------\n";
-
-	//for (long i = 0; i < Wysokosc; i++) {
-	//	for (long j = 0; j < Szerokosc; j++) {
+	//int waskol = 0;
+	//long doWysokosc = Wysokosc - 1;
+	//long doSzerokosc = Szerokosc - 1;
+	//cout << "\n-----------MOJE przed analiza krokow--------------\n";
+	//for (long i = 1; i < doWysokosc; i++) {
+	//	for (long j = 1; j < doSzerokosc; j++) {
+	//		cout << "\n-----------" << waskol << "--------------\n";
+	//		waskol++;
 	//		AnalizaKroku(j, i);                   ///??? Blad jest w   AnalizaKroku(j, i);   z tego program nie wychodzi
 	//	}
 	//}
+	//cout << "\n-----------MOJE po analiza krokow--------------\n";
+
+	for (long i = 0; i < Wysokosc; i++) {
+		for (long j = 0; j < Szerokosc; j++) {
+			AnalizaKroku(j, i);                   ///??? Blad jest w   AnalizaKroku(j, i);   z tego program nie wychodzi
+		}
+	}
 
 //???  --->    spr.
 cout<<"\nPlansza po Analiza()\n";
@@ -106,48 +106,48 @@ bool Array::SprawdzenieSasiadow(long pozX, long pozY){
 	long x = pozX;
 	long y = pozY;
 
-	if (Plansza[y - 1][x - 1].zywy) iluSasiadowZyje++;
-	if (Plansza[y - 1][x].zywy) iluSasiadowZyje++;
-	if (Plansza[y - 1][x + 1].zywy) iluSasiadowZyje++;
+	//if (Plansza[y - 1][x - 1].zywy) iluSasiadowZyje++;
+	//if (Plansza[y - 1][x].zywy) iluSasiadowZyje++;
+	//if (Plansza[y - 1][x + 1].zywy) iluSasiadowZyje++;
+	//
+	//if (Plansza[y][x - 1].zywy) iluSasiadowZyje++;
+	//if (Plansza[y][x + 1].zywy) iluSasiadowZyje++;
+	//
+	//if (Plansza[y + 1][x - 1].zywy) iluSasiadowZyje++;
+	//if (Plansza[y + 1][x].zywy) iluSasiadowZyje++;
+	//if (Plansza[y + 1][x + 1].zywy) iluSasiadowZyje++;
 	
-	if (Plansza[y][x - 1].zywy) iluSasiadowZyje++;
-	if (Plansza[y][x + 1].zywy) iluSasiadowZyje++;
+
+	if (y > 0) {
+		if (x > 0) {
+			if (Plansza[y - 1][x - 1].zywy) iluSasiadowZyje++;
+		}
 	
-	if (Plansza[y + 1][x - 1].zywy) iluSasiadowZyje++;
-	if (Plansza[y + 1][x].zywy) iluSasiadowZyje++;
-	if (Plansza[y + 1][x + 1].zywy) iluSasiadowZyje++;
-	
+		if (Plansza[y - 1][x].zywy) iluSasiadowZyje++;
+		
+		if (x < Szerokosc-1) {
+			if (Plansza[y - 1][x + 1].zywy) iluSasiadowZyje++;
+		}
+	}
 
-	//if (y > 0) {
-	//	if (x > 0) {
-	//		if (Plansza[y - 1][x - 1].zywy) iluSasiadowZyje++;
-	//	}
+	if (x > 0) {
+		if (Plansza[y][x - 1].zywy) iluSasiadowZyje++;
+	}
+	if (x < Szerokosc-1) {
+		if (Plansza[y][x + 1].zywy) iluSasiadowZyje++;
+	}
 
-	//	if (Plansza[y - 1][x].zywy) iluSasiadowZyje++;
-	//	
-	//	if (x < Szerokosc) {
-	//		if (Plansza[y - 1][x + 1].zywy) iluSasiadowZyje++;
-	//	}
-	//}
+	if (y < Wysokosc-1) {
+		if (x > 0) {
+			if (Plansza[y + 1][x - 1].zywy) iluSasiadowZyje++;
+		}
 
-	//if (x > 0) {
-	//	if (Plansza[y][x - 1].zywy) iluSasiadowZyje++;
-	//}
-	//if (x < Szerokosc) {
-	//	if (Plansza[y][x + 1].zywy) iluSasiadowZyje++;
-	//}
-
-	//if (y < Wysokosc) {
-	//	if (x > 0) {
-	//		if (Plansza[y + 1][x - 1].zywy) iluSasiadowZyje++;
-	//	}
-
-	//	if (Plansza[y + 1][x].zywy) iluSasiadowZyje++;
-	//	
-	//	if (x < Szerokosc) {
-	//		if (Plansza[y + 1][x + 1].zywy) iluSasiadowZyje++;
-	//	}
-	//}
+		if (Plansza[y + 1][x].zywy) iluSasiadowZyje++;//DEBUG
+		
+		if (x < Szerokosc-1) {
+			if (Plansza[y + 1][x + 1].zywy) iluSasiadowZyje++;
+		}
+	}
 
 	//true - przezyje, false - umrze
 	if (Plansza[y][x].zywy){
@@ -161,6 +161,9 @@ bool Array::SprawdzenieSasiadow(long pozX, long pozY){
 	else{
 		if (iluSasiadowZyje==3){
 			return true;
+		}
+		else{
+			return false;
 		}
 	}
 	//return 1; //???
@@ -182,6 +185,9 @@ void Array::AnalizaKroku(long pozX, long pozY){
 }
 
 void Array::Przejscie(){
+	//cout << "\nPrzejscie     x: " << GetSzerokosc() << " ,y: " << GetWysokosc() << "\n";
+	//system("PAUSE");
+
 	for (long i = 0; i < Wysokosc; i++) {
 		for (long j = 0; j < Szerokosc; j++) {
 			Plansza[i][j] = PlanszaTMP[i][j];
