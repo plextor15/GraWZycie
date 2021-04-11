@@ -3,6 +3,8 @@
 
 #include "Cell.h"
 
+
+
 class Array
 {
 private:                                             //??? czy na pewno ma byc private, a nie protected?

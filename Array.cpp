@@ -47,12 +47,14 @@ cout<<"\nPlansza przed Analiza()\n";
 	}
 //???  <---
 
+/*
 	PlanszaTMP = new Cell* [Wysokosc];              //??? gdzie jest destrukcja tej tablicy? nie widze.
                                                     //??? destruktor to za malo, obiekt Array zyje caly czas podczas gry.
 	for (long i = 0; i < Wysokosc; i++){
 //???		Plansza[i] = new Cell[Szerokosc];
 		PlanszaTMP[i] = new Cell[Szerokosc];         //???
 	}
+*/
 
 	for (long i = 0; i < Wysokosc; i++){
 		for (long j = 0; j < Szerokosc; j++){
@@ -62,9 +64,11 @@ cout<<"\nPlansza przed Analiza()\n";
 
 	//DEBUG ONLY!!
 	int waskol = 0;
+	long doWysokosc = Wysokosc - 1;
+	long doSzerokosc = Szerokosc - 1;
 	cout << "\n-----------MOJE przed analiza krokow--------------\n";
-	for (long i = 1; i < --Wysokosc; i++) {
-		for (long j = 1; j < --Szerokosc; j++) {
+	for (long i = 1; i < doWysokosc; i++) {
+		for (long j = 1; j < doSzerokosc; j++) {
 			cout << "\n-----------" << waskol << "--------------\n";
 			waskol++;
 			AnalizaKroku(j, i);                   ///??? Blad jest w   AnalizaKroku(j, i);   z tego program nie wychodzi
@@ -80,16 +84,21 @@ cout<<"\nPlansza przed Analiza()\n";
 
 //???  --->    spr.
 cout<<"\nPlansza po Analiza()\n";
+cout << "x: " << Szerokosc << " , y: " << Wysokosc << "\n";
 	for (long i = 0; i < Wysokosc; i++){
 		for (long j = 0; j < Szerokosc; j++){
-			cout<< Plansza[i][j].GetCell()<<" ";
+			cout << Plansza[i][j].GetCell() <<" ";
 		}
+		//system("PAUSE");
 		cout<<endl;
 	}
 //???  <---
 
 
-//??? zbedne;	return;
+//??? zbedne;	
+
+	Przejscie();
+	return;
 }
 
 bool Array::SprawdzenieSasiadow(long pozX, long pozY){
@@ -154,7 +163,7 @@ bool Array::SprawdzenieSasiadow(long pozX, long pozY){
 			return true;
 		}
 	}
-	return 1; //???
+	//return 1; //???
 }
 
 void Array::AnalizaKroku(long pozX, long pozY){
@@ -179,12 +188,12 @@ void Array::Przejscie(){
 		}
 	}
 
-	if (PlanszaTMP) {
-		for (long i = 0; i < Wysokosc; i++) {
-			delete[] PlanszaTMP[i];
-		}
-		delete[] PlanszaTMP;
-	}
+	//if (PlanszaTMP) {
+	//	for (long i = 0; i < Wysokosc; i++) {
+	//		delete[] PlanszaTMP[i];
+	//	}
+	//	delete[] PlanszaTMP;
+	//}
 
 	return;
 }

@@ -27,10 +27,21 @@ cout<<"Init - po otwarciu pliku\n"<< szerokosc <<"   "<< wysokosc<<endl;        
 //    for (long i = 0; i < GetWysokosc(); i++){
 //        Plansza[i] = new Cell[GetSzerokosc()];
 //    }
+
+
     Plansza = new Cell*[GetWysokosc()];
     for (long i = 0; i < GetWysokosc(); i++){
         Plansza[i] = new Cell[GetSzerokosc()];
     }                                                        //???   <---
+
+    //stworzenie PlanszaTMP zeby byla, pozniej tylko zerowanie
+    PlanszaTMP = new Cell * [GetWysokosc()];
+    for (long i = 0; i < GetWysokosc(); i++) {
+        PlanszaTMP[i] = new Cell[GetSzerokosc()];
+    }
+
+
+
 //???  <---
 /*   //???  ---> wylaczylem JM  - bardzo skomplikowane;
     long ileWszystkich = GetSzerokosc() * GetWysokosc(); //ile jest wszystkich pol na planszy
@@ -72,8 +83,14 @@ cout<<"\nPlansza po Init\n";
 void Engine::GameLoop(){
     while (true)
     {
+        cout << "\n----------- x: " << GetSzerokosc() << " ,y: " << GetWysokosc() << " ------------\n";
+        system("PAUSE");
+
         Analiza();
 //???        Przejscie();          //??? albo Przejscie() albo View(), musi Pan wybrac;
+        //Przejscie() jest na koniec Analizy
+
+        cout << "\n";
         View();
         cout << "\nLOOPEK\n";
     }
