@@ -94,10 +94,7 @@ cout << "x: " << Szerokosc << " , y: " << Wysokosc << "\n";
 	}
 //???  <---
 
-
 //??? zbedne;	
-
-	Przejscie();
 	return;
 }
 
@@ -105,18 +102,6 @@ bool Array::SprawdzenieSasiadow(long pozX, long pozY){
 	int iluSasiadowZyje = 0;
 	long x = pozX;
 	long y = pozY;
-
-	//if (Plansza[y - 1][x - 1].zywy) iluSasiadowZyje++;
-	//if (Plansza[y - 1][x].zywy) iluSasiadowZyje++;
-	//if (Plansza[y - 1][x + 1].zywy) iluSasiadowZyje++;
-	//
-	//if (Plansza[y][x - 1].zywy) iluSasiadowZyje++;
-	//if (Plansza[y][x + 1].zywy) iluSasiadowZyje++;
-	//
-	//if (Plansza[y + 1][x - 1].zywy) iluSasiadowZyje++;
-	//if (Plansza[y + 1][x].zywy) iluSasiadowZyje++;
-	//if (Plansza[y + 1][x + 1].zywy) iluSasiadowZyje++;
-	
 
 	if (y > 0) {
 		if (x > 0) {
@@ -166,7 +151,6 @@ bool Array::SprawdzenieSasiadow(long pozX, long pozY){
 			return false;
 		}
 	}
-	//return 1; //???
 }
 
 void Array::AnalizaKroku(long pozX, long pozY){
@@ -184,10 +168,7 @@ void Array::AnalizaKroku(long pozX, long pozY){
 	return;
 }
 
-void Array::Przejscie(){
-	//cout << "\nPrzejscie     x: " << GetSzerokosc() << " ,y: " << GetWysokosc() << "\n";
-	//system("PAUSE");
-
+/*void Array::Przejscie(){
 	for (long i = 0; i < Wysokosc; i++) {
 		for (long j = 0; j < Szerokosc; j++) {
 			Plansza[i][j] = PlanszaTMP[i][j];
@@ -202,22 +183,4 @@ void Array::Przejscie(){
 	//}
 
 	return;
-}
-
-void Array::SetWysokosc(long wys){
-	Wysokosc = wys;
-	return;
-}
-
-void Array::SetSzerokosc(long szer){
-	Szerokosc = szer;
-	return;
-}
-
-long Array::GetWysokosc(){
-	return Wysokosc;
-}
-
-long Array::GetSzerokosc(){
-	return Szerokosc;
-}
+}*/

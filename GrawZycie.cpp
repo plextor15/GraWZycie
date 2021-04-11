@@ -9,7 +9,7 @@ int main() {
 cout<<"Init OK\n";                               //???
 	//GraWZycie->Start();
 	GraWZycie->GameLoop();
-cout<<"Loop\n";                                  //???
+//cout<<"Loop\n";                                  //???
 
 	return 0;
 }

@@ -20,8 +20,8 @@ cout<<"Init - przed otwarciem pliku\n";                               //???
     inic.open("plansza.ini");
     inic >> szerokosc >> wysokosc;
 cout<<"Init - po otwarciu pliku\n"<< szerokosc <<"   "<< wysokosc<<endl;                       //???
-    SetSzerokosc(szerokosc);
-    SetWysokosc(wysokosc);
+    Szerokosc = szerokosc;
+    Wysokosc = wysokosc;
 
 //    *Plansza = new Cell[GetWysokosc()];                    //???   --->
 //    for (long i = 0; i < GetWysokosc(); i++){
@@ -29,15 +29,15 @@ cout<<"Init - po otwarciu pliku\n"<< szerokosc <<"   "<< wysokosc<<endl;        
 //    }
 
 
-    Plansza = new Cell*[GetWysokosc()];
-    for (long i = 0; i < GetWysokosc(); i++){
-        Plansza[i] = new Cell[GetSzerokosc()];
+    Plansza = new Cell*[Wysokosc];
+    for (long i = 0; i < Wysokosc; i++){
+        Plansza[i] = new Cell[Szerokosc];
     }                                                        //???   <---
 
     //stworzenie PlanszaTMP zeby byla, pozniej tylko zerowanie
-    PlanszaTMP = new Cell * [GetWysokosc()];
-    for (long i = 0; i < GetWysokosc(); i++) {
-        PlanszaTMP[i] = new Cell[GetSzerokosc()];
+    PlanszaTMP = new Cell * [Wysokosc];
+    for (long i = 0; i < Wysokosc; i++) {
+        PlanszaTMP[i] = new Cell[Szerokosc];
     }
 
 
@@ -80,17 +80,28 @@ cout<<"\nPlansza po Init\n";
 //??? zbedne;    return;
 }
 
+void Engine::Przejscie() {
+    for (long i = 0; i < Wysokosc; i++) {
+        for (long j = 0; j < Szerokosc; j++) {
+            Plansza[i][j] = PlanszaTMP[i][j];
+        }
+    }
+
+    return;
+}
+
 void Engine::GameLoop(){
     while (true)
     {
-        cout << "\n----------- x: " << GetSzerokosc() << " ,y: " << GetWysokosc() << " ------------\n";
+        cout << "\n----------- x: " << Szerokosc << " ,y: " << Wysokosc << " ------------\n";
         system("PAUSE");
 
         Analiza();
 //???        Przejscie();          //??? albo Przejscie() albo View(), musi Pan wybrac;
-        //Przejscie() jest na koniec Analizy
+        Przejscie();
 
         cout << "\n";
+        cout << "\n----------- x: " << Szerokosc << " ,y: " << Wysokosc << " ------------\n";
         View();
         cout << "\nLOOPEK\n";
     }
@@ -98,19 +109,19 @@ void Engine::GameLoop(){
     return;
 }
 
-void Engine::View()
-{
-    for (long i = 0; i < Wysokosc; i++) {
-        for (long j = 0; j < Szerokosc; j++) {
-            if (Plansza[i][j].CzyZyje()) {
-                std::cout << 'O';
-            }
-            else {
-                std::cout << '.';
-            }
-        }
-        std::cout << std::endl;
-    }
-}
+//void Engine::View()
+//{
+//    for (long i = 0; i < Wysokosc; i++) {
+//        for (long j = 0; j < Szerokosc; j++) {
+//            if (Plansza[i][j].CzyZyje()) {
+//                std::cout << 'O';
+//            }
+//            else {
+//                std::cout << '.';
+//            }
+//        }
+//        std::cout << std::endl;
+//    }
+//}
 
 

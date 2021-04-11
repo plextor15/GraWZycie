@@ -22,9 +22,11 @@ public:
 
 	void Initialize();
 	//void Start();
+	void Przejscie();
+	virtual void View() = 0;                          //??? albo Przejscie() albo View(), musi Pan wybrac;
 	void GameLoop();
-//virtual void View() {}                          //??? albo Przejscie() albo View(), musi Pan wybrac;
-	void View();//DEBUG ONLY!!
+	
+	
 	//void Pause();
 	//void Resume();
 	//void Quit();
