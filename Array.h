@@ -5,7 +5,8 @@
 
 class Array
 {
-private:
+private:                                             //??? czy na pewno ma byc private, a nie protected?
+                                                     //??? wtedy zbedne Set.. Get..
 	//bool Edycja;		//blokada zeby nie zaczelo zyc podczas edycji
 	long Szerokosc;
 	long Wysokosc;

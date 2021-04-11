@@ -23,6 +23,8 @@ public:
 	void Initialize();
 	//void Start();
 	void GameLoop();
+//virtual void View() {}                          //??? albo Przejscie() albo View(), musi Pan wybrac;
+	void View();//DEBUG ONLY!!
 	//void Pause();
 	//void Resume();
 	//void Quit();
@@ -30,7 +32,7 @@ public:
 	//void Load(std::string DoZaladowania);
 	//void Save(std::string DoZapisania);
 
-	friend class TxT;
+	friend class TxT;                    //??? TxT dzisdziczy Engine, wiec friend jrst zbedne; wystarczy enkapsulacja 'protected' zamiast 'private';
 	//friend class aPI;
 };
 

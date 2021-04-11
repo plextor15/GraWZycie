@@ -9,19 +9,19 @@ class TxT : public Engine
 {
 private:
 	//bool BlokadaKlawiatury = false;
-	short Wysokosc = 20;
-	short Szerokosc = 20;
+	short Wysokosc = 20;                      //???
+	short Szerokosc = 20;                     //???
 
 public:
-	char Martwy = ' ';
-	char Zywy = '#';
+	char Martwy = ' ';                        //???
+	char Zywy = '#';                          //???
 
 	TxT(){}
 	TxT(const TxT& t);
 	virtual ~TxT(){};
 	const TxT& operator=(const Engine& e);
 
-	void View();	//virtual
+	void View();	//virtual     //??? jesli daje Pan komentarz, to dlaczego nie pisze Pan jawnie virtual?
 	void GameLoop();
 
 	//void Blokada(bool zablokowane);		//ustawia blokade wczytywania znakow
