@@ -4,6 +4,22 @@ Engine::Engine(){
 }
 
 Engine::~Engine(){
+    //destrukcja tablic
+    if (Plansza) {
+        for (long i = 0; i < Wysokosc; i++) {
+            delete[] Plansza[i];
+        }
+        delete[] Plansza;
+        Plansza = NULL;
+    }
+
+    if (PlanszaTMP) {
+        for (long i = 0; i < Wysokosc; i++) {
+            delete[] PlanszaTMP[i];
+        }
+        delete[] PlanszaTMP;
+        PlanszaTMP = NULL;
+    }
 }
 
 void Engine::Initialize(){

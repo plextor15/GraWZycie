@@ -1,5 +1,4 @@
 #include "TxT.h"
-//#include <iostream>
 
 TxT::TxT(){
     ileKlatka = 1000;
@@ -19,5 +18,6 @@ void TxT::View(){
     }
 
     Sleep(ileKlatka);
+    system("CLS");
 	return;
 }

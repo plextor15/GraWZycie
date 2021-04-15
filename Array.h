@@ -14,7 +14,7 @@ protected:
 
 	Array();
 	Array(long wys, long szer);
-	~Array();
+	virtual ~Array();
 
 	bool SprawdzenieSasiadow(long pozX, long pozY);
 	void AnalizaKroku(long pozX, long pozY);

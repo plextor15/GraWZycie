@@ -11,7 +11,7 @@ class Engine : protected Array
 public:
 	Engine();
 	Engine(const Engine& e);
-	~Engine();
+	virtual ~Engine();
 	const Engine& operator=(const Engine& e);
 
 	void Initialize();

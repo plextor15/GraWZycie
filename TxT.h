@@ -15,7 +15,7 @@ public:
 
 	TxT();
 	TxT(const TxT& t);
-	virtual ~TxT(){};
+	virtual ~TxT() {};
 	const TxT& operator=(const Engine& e);
 
 	virtual void View();
