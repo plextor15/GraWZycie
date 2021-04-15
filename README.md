@@ -1,4 +1,4 @@
 # GraWZycie
 
-Not final, testing how repos work.
+Probably final, testing how repos work.
 Please ignore :)
