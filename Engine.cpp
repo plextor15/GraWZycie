@@ -1,10 +1,8 @@
 #include "Engine.h"
 
-Engine::Engine(){
-}
+Engine::Engine() {}
 
 Engine::~Engine(){
-    //destrukcja tablic
     if (Plansza) {
         for (long i = 0; i < Wysokosc; i++) {
             delete[] Plansza[i];
@@ -27,9 +25,16 @@ void Engine::Initialize(){
 
     std::ifstream inic;
     inic.open("plansza.ini");
-    inic >> szerokosc >> wysokosc;
-    Szerokosc = szerokosc;
-    Wysokosc = wysokosc;
+
+    if (inic.good()) {
+        inic >> szerokosc >> wysokosc;
+        Szerokosc = szerokosc;
+        Wysokosc = wysokosc;
+    }
+    else {
+        Szerokosc = 1;
+        Wysokosc = 1;
+    }
 
     Plansza = new Cell*[Wysokosc];
     for (long i = 0; i < Wysokosc; i++){
@@ -42,13 +47,18 @@ void Engine::Initialize(){
         PlanszaTMP[i] = new Cell[Szerokosc];
     }
 
-    bool bx;
-	for (long i = 0; i < Wysokosc; i++){
-		for (long j = 0; j < Szerokosc; j++){
-            inic >> bx;
-			Plansza[i][j].SetCell(bx);
-		}
-	}
+    if (inic.good()) {
+        bool bx;
+        for (long i = 0; i < Wysokosc; i++) {
+            for (long j = 0; j < Szerokosc; j++) {
+                inic >> bx;
+                Plansza[i][j].SetCell(bx);
+            }
+        }
+    }
+    else{
+        Plansza[0][0].SetCell(true);
+    }
 
     inic.close();
     return;
@@ -60,7 +70,6 @@ void Engine::Przejscie() {
             Plansza[i][j] = PlanszaTMP[i][j];
         }
     }
-
     return;
 }
 
@@ -71,6 +80,5 @@ void Engine::GameLoop(){
         Przejscie();
         View();
     }
-
     return;
 }
