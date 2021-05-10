@@ -1,23 +1,12 @@
 #include "Engine.h"
+//#include <fstream>
 
-Engine::Engine() {}
+Engine::Engine(){
+
+}
 
 Engine::~Engine(){
-    if (Plansza) {
-        for (long i = 0; i < Wysokosc; i++) {
-            delete[] Plansza[i];
-        }
-        delete[] Plansza;
-        Plansza = NULL;
-    }
 
-    if (PlanszaTMP) {
-        for (long i = 0; i < Wysokosc; i++) {
-            delete[] PlanszaTMP[i];
-        }
-        delete[] PlanszaTMP;
-        PlanszaTMP = NULL;
-    }
 }
 
 void Engine::Initialize(){
@@ -25,60 +14,39 @@ void Engine::Initialize(){
 
     std::ifstream inic;
     inic.open("plansza.ini");
+    inic >> szerokosc >> wysokosc;
+    SetSzerokosc(szerokosc);
+    SetWysokosc(wysokosc);
 
-    if (inic.good()) {
-        inic >> szerokosc >> wysokosc;
-        Szerokosc = szerokosc;
-        Wysokosc = wysokosc;
-    }
-    else {
-        Szerokosc = 1;
-        Wysokosc = 1;
+    *Plansza = new Cell[GetWysokosc()];
+    for (long i = 0; i < GetWysokosc(); i++){
+        Plansza[i] = new Cell[GetSzerokosc()];
     }
 
-    Plansza = new Cell*[Wysokosc];
-    for (long i = 0; i < Wysokosc; i++){
-        Plansza[i] = new Cell[Szerokosc];
-    }
-
-    //stworzenie PlanszaTMP zeby byla, pozniej tylko zerowanie
-    PlanszaTMP = new Cell * [Wysokosc];
-    for (long i = 0; i < Wysokosc; i++) {
-        PlanszaTMP[i] = new Cell[Szerokosc];
-    }
-
-    if (inic.good()) {
-        bool bx;
-        for (long i = 0; i < Wysokosc; i++) {
-            for (long j = 0; j < Szerokosc; j++) {
-                inic >> bx;
-                Plansza[i][j].SetCell(bx);
-            }
+    long ileWszystkich = GetSzerokosc() * GetWysokosc(); //ile jest wszystkich pol na planszy
+    bool czytnik;
+    for (long i = 0; i < ileWszystkich; i++){
+        inic >> czytnik;
+        if (czytnik) {
+            Plansza[ileWszystkich / GetWysokosc()][ileWszystkich / GetSzerokosc()].Ozyw();
         }
-    }
-    else{
-        Plansza[0][0].SetCell(true);
+        //else { //wszystkie zaczynaja jako martwe
+        //    Plansza[ileWszystkich / GetWysokosc()][ileWszystkich / GetSzerokosc()].Zabij();
+        //}
     }
 
     inic.close();
     return;
 }
 
-void Engine::Przejscie() {
-    for (long i = 0; i < Wysokosc; i++) {
-        for (long j = 0; j < Szerokosc; j++) {
-            Plansza[i][j] = PlanszaTMP[i][j];
-        }
+void Engine::GameLoop(){
+    while (true)
+    {
+        Analiza();
+        Przejscie();
     }
+
     return;
 }
 
-void Engine::GameLoop(){
-    Initialize();
-    while (true) {
-        Analiza();
-        Przejscie();
-        View();
-    }
-    return;
-}
+

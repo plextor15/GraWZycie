@@ -1,7 +1,17 @@
 #include "TxT.h"
+#include <iostream>
 
-TxT::TxT(){
-    ileKlatka = 1000;
+void TxT::GameLoop(){
+    char klkl; //DEBUG ONLY!!
+    while (true)
+    {
+        Analiza();
+        Przejscie();
+        View(); //nie ma juz Plansza TMP
+
+        std::cin >> klkl;   //DEBUG ONLY!!
+    }
+    return;
 }
 
 void TxT::View(){
@@ -17,7 +27,6 @@ void TxT::View(){
         std::cout << std::endl;
     }
 
-    Sleep(ileKlatka);
-    system("CLS");
 	return;
 }
+

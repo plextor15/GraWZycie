@@ -1,13 +1,17 @@
 #include "Array.h"
 
 Array::Array(){
+	//Edycja = false;
 	Szerokosc = 2;
 	Wysokosc = 2;
+
 }
 
 Array::Array(long wys, long szer){
 	Szerokosc = szer;
 	Wysokosc = wys;
+	//Edycja = false;
+
 }
 
 Array::~Array(){
@@ -16,17 +20,18 @@ Array::~Array(){
 			delete[] Plansza[i];
 		}
 		delete[] Plansza;
-	}
-
-	if (PlanszaTMP) {
-		for (long i = 0; i < Wysokosc; i++) {
-			delete[] PlanszaTMP[i];
-		}
-		delete[] PlanszaTMP;
-	}
+	}	
 }
 
 void Array::Analiza(){
+	//inicjalizacja Plansza i PlanszaTMP
+	//PlanszaTMP = nullptr;
+
+	PlanszaTMP = new Cell* [Wysokosc];
+	for (long i = 0; i < Wysokosc; i++){
+		Plansza[i] = new Cell[Szerokosc];
+	}
+
 	for (long i = 0; i < Wysokosc; i++){
 		for (long j = 0; j < Szerokosc; j++){
 			PlanszaTMP[i][j] = Plansza[i][j];
@@ -47,36 +52,16 @@ bool Array::SprawdzenieSasiadow(long pozX, long pozY){
 	long x = pozX;
 	long y = pozY;
 
-	if (y > 0) {
-		if (x > 0) {
-			if (Plansza[y - 1][x - 1].zywy) iluSasiadowZyje++;
-		}
+	if (Plansza[y - 1][x - 1].zywy) iluSasiadowZyje++;
+	if (Plansza[y - 1][x].zywy) iluSasiadowZyje++;
+	if (Plansza[y - 1][x + 1].zywy) iluSasiadowZyje++;
 	
-		if (Plansza[y - 1][x].zywy) iluSasiadowZyje++;
-		
-		if (x < Szerokosc-1) {
-			if (Plansza[y - 1][x + 1].zywy) iluSasiadowZyje++;
-		}
-	}
-
-	if (x > 0) {
-		if (Plansza[y][x - 1].zywy) iluSasiadowZyje++;
-	}
-	if (x < Szerokosc-1) {
-		if (Plansza[y][x + 1].zywy) iluSasiadowZyje++;
-	}
-
-	if (y < Wysokosc-1) {
-		if (x > 0) {
-			if (Plansza[y + 1][x - 1].zywy) iluSasiadowZyje++;
-		}
-
-		if (Plansza[y + 1][x].zywy) iluSasiadowZyje++;
-		
-		if (x < Szerokosc-1) {
-			if (Plansza[y + 1][x + 1].zywy) iluSasiadowZyje++;
-		}
-	}
+	if (Plansza[y][x - 1].zywy) iluSasiadowZyje++;
+	if (Plansza[y][x + 1].zywy) iluSasiadowZyje++;
+	
+	if (Plansza[y + 1][x - 1].zywy) iluSasiadowZyje++;
+	if (Plansza[y + 1][x].zywy) iluSasiadowZyje++;
+	if (Plansza[y + 1][x + 1].zywy) iluSasiadowZyje++;
 
 	//true - przezyje, false - umrze
 	if (Plansza[y][x].zywy){
@@ -91,9 +76,6 @@ bool Array::SprawdzenieSasiadow(long pozX, long pozY){
 		if (iluSasiadowZyje==3){
 			return true;
 		}
-		else{
-			return false;
-		}
 	}
 }
 
@@ -106,6 +88,40 @@ void Array::AnalizaKroku(long pozX, long pozY){
 	else {	//teoretycznie niepotrzebne, ale jest zaby wszystko bylo jasne
 		PlanszaTMP[pozY][pozX].Zabij();
 	}
+	return;
+}
+
+void Array::Przejscie(){
+	for (long i = 0; i < Wysokosc; i++) {
+		for (long j = 0; j < Szerokosc; j++) {
+			Plansza[i][j] = PlanszaTMP[i][j];
+		}
+	}
+
+	if (PlanszaTMP) {
+		for (long i = 0; i < Wysokosc; i++) {
+			delete[] PlanszaTMP[i];
+		}
+		delete[] PlanszaTMP;
+	}
 
 	return;
+}
+
+void Array::SetWysokosc(long wys){
+	Wysokosc = wys;
+	return;
+}
+
+void Array::SetSzerokosc(long szer){
+	Szerokosc = szer;
+	return;
+}
+
+long Array::GetWysokosc(){
+	return Wysokosc;
+}
+
+long Array::GetSzerokosc(){
+	return Szerokosc;
 }
