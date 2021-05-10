@@ -9,8 +9,8 @@ class Api : public Engine
 {
 private:
 	HDC m_hdc;
-	short Wysokosc = 20;
-	short Szerokosc = 20;
+	//short Wysokosc = 20;
+	//short Szerokosc = 20;
 
 public:
 	Api(){}

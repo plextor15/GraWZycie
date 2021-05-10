@@ -106,6 +106,9 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
             break;
         case WM_LBUTTONDOWN:
             //GA.StartGame("23/3");
+
+            GA.Initialize();
+            Sleep(2000);
             GA.GameLoop();
             break;
         case WM_DESTROY:

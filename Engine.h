@@ -6,32 +6,18 @@
 
 #include "Array.h"
 
-//moze array to Engine
 class Engine : protected Array
 {
-private:
-	bool PAUZA = false;
-	bool WYJSCIE = false;
-	unsigned short fps = 10;
-
 public:
 	Engine();
 	Engine(const Engine& e);
-	~Engine();
+	virtual ~Engine();
 	const Engine& operator=(const Engine& e);
 
 	void Initialize();
-	//void Start();
+	void Przejscie();
+	virtual void View() = 0;
 	void GameLoop();
-	//void Pause();
-	//void Resume();
-	//void Quit();
-
-	//void Load(std::string DoZaladowania);
-	//void Save(std::string DoZapisania);
-
-	friend class TxT;
-	friend class Api;
 };
 
 #endif // !ENGINE_H
